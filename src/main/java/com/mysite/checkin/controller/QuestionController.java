@@ -1,6 +1,7 @@
 package com.mysite.checkin.controller;
 
 import com.mysite.checkin.domain.Question;
+import com.mysite.checkin.form.AnswerForm;
 import com.mysite.checkin.form.QuestionForm;
 import com.mysite.checkin.repository.QuestionRepository;
 import com.mysite.checkin.service.QuestionService;
@@ -27,7 +28,7 @@ public class QuestionController {
     }
 
     @GetMapping(value = "/detail/{id}")
-    public String detail(Model model, @PathVariable("id") Integer id) {
+    public String detail(Model model, @PathVariable("id") Integer id, AnswerForm answerForm) {
         Question question = this.questionService.getQuestion(id);
         model.addAttribute("question", question);
         return "question_detail";
